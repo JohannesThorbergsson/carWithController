@@ -12,25 +12,25 @@ public class CarController {
             new Car("Opel", 4, true, 42)))));
 
     @PostMapping("/postCar")
-    public String postCar(@RequestBody Car car) {
+    public CarService postCar(@RequestBody Car car) {
         carService.addCar(car);
-        return carService.toString();
+        return carService;
     }
     @GetMapping("/getAllCars")
     public List<Car> getAllCars(){
        return carService.getCars();
     }
     @DeleteMapping("/deleteCar/{id}")
-    public String deleteCar(@PathVariable int id){
+    public CarService deleteCar(@PathVariable int id){
         carService.deleteCar(id);
-        return carService.toString();
+        return carService;
     }
 
     @PutMapping("/putCar/{id}")
-    public String putCar(@RequestBody Car car, @PathVariable int id){
+    public CarService putCar(@RequestBody Car car, @PathVariable int id){
         if(carService.deleteCar(id).isPresent()) {
             carService.addCar(car);
         }
-        return carService.toString();
+        return carService;
     }
 }
