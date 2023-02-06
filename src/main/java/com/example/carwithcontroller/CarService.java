@@ -20,4 +20,9 @@ public class CarService {
     public List<Car> getCars(){
         return carRepository.getCars();
     }
+
+    public CarRepository deleteCar(int id){
+        carRepository.deleteCar(id);
+        return carRepository;
+    }
 }
