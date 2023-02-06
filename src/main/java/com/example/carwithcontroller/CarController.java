@@ -16,4 +16,11 @@ public class CarController {
         carService.addCar(car);
         return carService.toString();
     }
+    @GetMapping("/getAllCars")
+    public List<Car> getAllCars(){
+        CarService carService = new CarService(new CarRepository(new ArrayList<>(List.of(
+                new Car("Opel", 4, true)))));
+        return carService.getCars();
+    }
+    
 }
