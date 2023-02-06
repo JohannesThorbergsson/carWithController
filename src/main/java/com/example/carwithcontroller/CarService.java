@@ -5,6 +5,8 @@ import lombok.ToString;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @AllArgsConstructor
 @ToString
 @Service
@@ -21,8 +23,7 @@ public class CarService {
         return carRepository.getCars();
     }
 
-    public CarRepository deleteCar(int id){
-        carRepository.deleteCar(id);
-        return carRepository;
+    public Optional<Car> deleteCar(int id){
+        return carRepository.deleteCar(id);
     }
 }

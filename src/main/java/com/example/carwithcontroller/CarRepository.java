@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Data
@@ -21,8 +22,9 @@ public class CarRepository {
         cars.add(car);
         return cars;
     }
-    public List<Car> deleteCar(int id) {
+    public Optional<Car> deleteCar(int id) {
+        Optional<Car> removed = cars.stream().filter(c->c.id()==id).findFirst();
         cars =cars.stream().filter(c ->c.id()!=id).collect(Collectors.toList());
-        return cars;
+        return removed;
     }
 }

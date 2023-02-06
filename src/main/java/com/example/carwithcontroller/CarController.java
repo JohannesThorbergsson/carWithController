@@ -28,9 +28,9 @@ public class CarController {
 
     @PutMapping("/putCar/{id}")
     public String putCar(@RequestBody Car car, @PathVariable int id){
-        carService.deleteCar(id);
-        carService.addCar(car);
+        if(carService.deleteCar(id).isPresent()) {
+            carService.addCar(car);
+        }
         return carService.toString();
-
     }
 }
